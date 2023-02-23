@@ -1,6 +1,7 @@
 import Header from "./components/Header/Header";
 import Navigation from "./components/Navigation/Navigation";
 import Catalog from "./components/Catalog/Catalog";
+import Footer from "./components/Footer/Footer.jsx";
 
 const App = () => {
   return (
@@ -10,7 +11,7 @@ const App = () => {
         <Navigation />
         <Catalog />
       </main>
-      <footer></footer>
+      <Footer />
     </>
   )
 };
