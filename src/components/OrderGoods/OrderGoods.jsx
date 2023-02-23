@@ -12,7 +12,7 @@ const OrderGoods = ({item}) => {
           <p className={style.price}> 1279 <span className="currency">₽</span></p>
         </div>
 
-        <Count count={1} />
+        <Count />
     </li>
   )
 };
