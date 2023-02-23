@@ -6,7 +6,7 @@ const Order = () => {
   return (
     <div className="catalog__order order">
       <section className="order__wrapper">
-        <div className="order__header" tabindex="0" role="button">
+        <div className="order__header" tabIndex="0" role="button">
           <h2 className="order__title">Корзина</h2>
 
           <span className="order__count">4</span>
