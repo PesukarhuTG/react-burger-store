@@ -1,5 +1,6 @@
 import Header from "./components/Header/Header";
 import Navigation from "./components/Navigation/Navigation";
+import Catalog from "./components/Catalog/Catalog";
 
 const App = () => {
   return (
@@ -7,7 +8,7 @@ const App = () => {
       <Header />
       <main>
         <Navigation />
-        <section></section>
+        <Catalog />
       </main>
       <footer></footer>
     </>
