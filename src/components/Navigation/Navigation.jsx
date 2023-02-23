@@ -5,7 +5,8 @@ import classNames from 'classnames';
 const Navigation = () => {
   return (
     <nav className={style.navigation}>
-      <Container className={style.container}>
+      <Container >
+        <div className={style.container}>
         <ul className={style.list}>
           <li className={style.item}>
             <button className={classNames(style.button, style.button_burger, style.button_active)}>Бургеры</button>
@@ -35,6 +36,7 @@ const Navigation = () => {
             <button className={classNames(style.button, style.button_sauce)}>Соусы</button>
           </li>
         </ul>
+        </div>
       </Container>
     </nav>
   )

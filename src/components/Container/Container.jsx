@@ -1,9 +1,8 @@
 import style from './Container.module.css';
-import classNames from 'classnames';
 
-const Container = ({children, className}) => {
+const Container = ({children}) => {
   return (
-    <div className={classNames(style.container, className)}>
+    <div className={style.container}>
       {children}
     </div>
   )
