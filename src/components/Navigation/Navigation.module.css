@@ -2,12 +2,12 @@
   margin-bottom: 30px;
 }
 
-.navigation__container {
+.container {
   padding: 0;
   min-width: 100vw;
 }
 
-.navigation__list {
+.list {
   display: flex;
   padding: 0 calc((100vw / 2) - (var(--container) / 2));
   overflow-x: auto;
@@ -15,7 +15,7 @@
   column-gap: 8px;
 }
 
-.navigation__button {
+.button {
   border-radius: 50px;
   padding: 7px 8px 7px 40px;
   font-size: 12px;
@@ -27,61 +27,61 @@
   background-position: 8px center;
 }
 
-.navigation__button:hover,
-.navigation__button:focus-visible  {
+.button:hover,
+.button:focus-visible  {
   outline: 1px solid #F86310;
   outline-offset: -1px;
 }
 
 @supports not selector(:focus-visible) {
-  .navigation__button:focus  {
+  .button:focus  {
     outline: 1px solid #F86310;
     outline-offset: -1px;
   }
 }
 
-.navigation__button_active {
+.button_active {
   pointer-events: none;
   background-color: #FFAB08;
 }
 
-.navigation__button_active:focus {
+.button_active:focus {
   outline: none;
 }
 
-.navigation__button_burger {
+.button_burger {
   background-image: url('../../assets/img/burger.png');
 }
 
-.navigation__button_snack {
+.button_snack {
   background-image: url('../../assets/img/snack.png');
 }
 
-.navigation__button_hotdog {
+.button_hotdog {
   background-image: url('../../assets/img/hot-dog.png');
 }
 
-.navigation__button_combo {
+.button_combo {
   background-image: url('../../assets/img/combo.png');
 }
 
-.navigation__button_shawarma {
+.button_shawarma {
   background-image: url('../../assets/img/shawarma.png');
 }
 
-.navigation__button_pizza {
+.button_pizza {
   background-image: url('../../assets/img/pizza.png');
 }
 
-.navigation__button_wok {
+.button_wok {
   background-image: url('../../assets/img/wok.png');
 }
 
-.navigation__button_dessert {
+.button_dessert {
   background-image: url('../../assets/img/dessert.png');
 }
 
-.navigation__button_sauce {
+.button_sauce {
   background-image: url('../../assets/img/sauce.png');
 }
 
