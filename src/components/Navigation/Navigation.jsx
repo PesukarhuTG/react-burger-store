@@ -11,7 +11,7 @@ const Navigation = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(categoryRequestAsync('max'));
+    dispatch(categoryRequestAsync());
   }, [])
 
   return (
