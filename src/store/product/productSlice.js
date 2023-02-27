@@ -7,7 +7,7 @@ const initialState = {
 };
 
 export const productRequestAsync = createAsyncThunk(
-  'prosuct/fetch', async (category) => {
+  'product/fetch', async (category) => {
     const response = await fetch(`${API_URL}${POSTFIX}?category=${category}`);
     const productList = await response.json();
     return productList;
