@@ -10,9 +10,9 @@ const initialState = {
 export const categoryRequestAsync = createAsyncThunk(
   'category/fetch', async () => {
     const response = await fetch(`${API_URL}${POSTFIX}/category`);
-    const dataCategory = await response.json();
-    return dataCategory;
-})
+    const categoryList = await response.json();
+    return categoryList;
+});
 
 const categorySlice = createSlice({
   name: 'category',
@@ -32,18 +32,8 @@ const categorySlice = createSlice({
         state.category = action.payload;
       })
       .addCase(categoryRequestAsync.rejected, (state, action) => {
-        state.error = action.error;
+        state.error = action.payload.error;
       })
-    // [categoryRequestAsync.pending.type]: (state) => {
-    //   state.error = '';
-    // },
-    // [categoryRequestAsync.fulfilled.type]: (state, action) => {
-    //   state.error = '';
-    //   state.category = action.payload;
-    // },
-    // [categoryRequestAsync.rejected.type]: (state, action) => {
-    //   state.error = action.error;
-    // },
   }
 });
 
