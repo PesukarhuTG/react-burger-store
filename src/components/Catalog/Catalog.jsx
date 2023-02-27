@@ -19,10 +19,6 @@ const Catalog = () => {
     }
   }, [category, activeCategory])
 
-  if (!products.length) {
-    return <Message text={'К сожалению, категория пока пуста'}/>;
-  }
-
   return (
     <section className={style.catalog}>
       <Container>
@@ -33,13 +29,17 @@ const Catalog = () => {
             <h2 className={style.title}>{category[activeCategory]?.rus}</h2>
 
             <div className={style.wrap_list}>
-              <ul className={style.list}>
-                {products.map(item => (
-                  <li className={style.item} key={item.id}>
-                    <CatalogProduct item={item} />
-                  </li>
-                ))}
-              </ul>
+              {products.length ? (
+                <ul className={style.list}>
+                  {products.map(item => (
+                    <li className={style.item} key={item.id}>
+                      <CatalogProduct item={item} />
+                    </li>
+                  ))}
+                </ul>
+                ) : (
+                <Message text={'К сожалению, категория пока пуста'}/>
+              )}
             </div>
 
           </div>
