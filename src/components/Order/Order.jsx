@@ -3,6 +3,7 @@ import OrderGoods from "../OrderGoods/OrderGoods";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { orderRequestAsync } from "../../store/order/orderSlice";
+import { openModal } from "../../store/modalDelivery/modalDeliverySlice";
 
 const Order = () => {
   const { totalPrice, totalCount, orderGoods, orderList } = useSelector(state => state.order);
@@ -34,7 +35,13 @@ const Order = () => {
             </p>
           </div>
 
-          <button className={style.submit}>Оформить заказ</button>
+          <button 
+            className={style.submit} 
+            disabled={orderGoods.length === 0}
+            onClick={() => dispatch(openModal())}
+            >
+              Оформить заказ
+          </button>
 
           <div className={style.apeal}>
             <p className={style.text}>Бесплатная доставка</p>

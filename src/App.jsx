@@ -4,6 +4,7 @@ import Catalog from "./components/Catalog/Catalog";
 import Footer from "./components/Footer/Footer";
 import { Provider } from "react-redux";
 import store from "./store/index.js";
+import ModalDelivery from "./components/ModalDelivery/ModalDelivery";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Catalog />
       </main>
       <Footer />
+      <ModalDelivery />
     </Provider>
   )
 };
