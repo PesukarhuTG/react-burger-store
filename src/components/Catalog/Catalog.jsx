@@ -9,7 +9,7 @@ import Message from '../Message/Message';
 
 
 const Catalog = () => {
-  const { products } = useSelector((state) => state.product);
+  const { products, flag } = useSelector((state) => state.product);
   const { category, activeCategory } = useSelector((state) => state.category);
   const dispatch = useDispatch();
 
@@ -38,7 +38,7 @@ const Catalog = () => {
                   ))}
                 </ul>
                 ) : (
-                <Message text={'К сожалению, категория пока пуста'}/>
+                flag && <Message text={'К сожалению, категория пока пуста'}/>
               )}
             </div>
 
