@@ -9,6 +9,9 @@ const initialState = {
   address: '',
   floor: '',
   intercom: '',
+  error: null,
+  errors: {},
+  touch: false,
 };
 
 export const submitForm = createAsyncThunk(
@@ -44,7 +47,17 @@ const formSlice = createSlice({
   reducers: {
     updateFormValue: (state, action) => {
       state[action.payload.field] = action.payload.value; // one reducers for all fields
-    }
+    },
+    setError: (state, action) => ({
+      ...state,
+      errors: action.payload,
+    }),
+    clearError: (state) => {
+      state.error = {};
+    },
+    changeTouch: (state) => {
+      state.touch = true;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -64,5 +77,39 @@ const formSlice = createSlice({
   }
 });
 
-export const { updateFormValue } = formSlice.actions;
+export const { updateFormValue, setError, clearError, changeTouch } = formSlice.actions;
 export default formSlice.reducer;
+
+export const validateForm = () => (dispatch, getState) => {
+  const form = getState().form; //get our form
+  const errors = {
+  };
+
+  if (!form.name) {
+    errors.name = 'Поле "Имя" обязательно к заполнению';
+  }
+
+  if (!form.phone) {
+    errors.phone = 'Поле "Телефон" обязательно к заполнению';
+  }
+
+  if (!form.address && form.format === 'delivery') {
+    errors.address = 'Поле "Адрес" обязательно к заполнению';
+  }
+
+  if (!form.floor && form.format === 'delivery') {
+    errors.floor = 'Поле "Этаж" обязательно к заполнению';
+  }
+
+  if (form.format === 'pickup') {
+    dispatch(updateFormValue({ field: 'address', value: ''}));
+    dispatch(updateFormValue({ field: 'floor', value: ''}));
+  }
+
+  if (Object.keys.length) {
+    dispatch(setError(errors));
+  } else {
+    dispatch(clearError(errors));
+  }
+
+};

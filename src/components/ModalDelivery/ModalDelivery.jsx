@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import style from './ModalDelivery.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeModal } from '../../store/modalDelivery/modalDeliverySlice';
-import { submitForm, updateFormValue } from '../../store/form/formSlice';
+import { changeTouch, submitForm, updateFormValue, validateForm } from '../../store/form/formSlice';
 
 const ModalDelivery = () => {
   const { isOpen } = useSelector(state => state.modal);
@@ -12,15 +12,25 @@ const ModalDelivery = () => {
   const dispatch = useDispatch();
 
   const handleInputChange = (e) => {
+    // fields update
     dispatch(updateFormValue({
       field: e.target.name,
       value: e.target.value,
-    }))
+    }));
+
+    //validation
+    dispatch(validateForm());
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(submitForm({...form, orderList}));
+
+    dispatch(validateForm());  //validation
+    dispatch(changeTouch());
+    
+    if (Object.keys(form.errors).length === 0 && form.touch ) {
+      dispatch(submitForm({...form, orderList})); //send data
+    }
   };
 
   return isOpen && (
@@ -42,15 +52,16 @@ const ModalDelivery = () => {
               type='text'
               name='name'
               value={form.name}
-              placeholder='Ваше имя'
+              placeholder='Ваше имя *'
               onChange={handleInputChange}
             />
+            
             <input
               className={style.input}
               type='tel'
               name='phone'
               value={form.phone}
-              placeholder='Телефон'
+              placeholder='Телефон *'
               onChange={handleInputChange}
             />
           </fieldset>
@@ -114,6 +125,11 @@ const ModalDelivery = () => {
         <button className={style.submit} type='submit' form='deliveryForm'>
           Оформить
         </button>
+
+        {form.touch && Object.entries(form.errors).map(([key, err]) => (
+          <span className={style.error} key={key}>{err}</span>
+        )
+        )}
       </div>
 
       <button 
