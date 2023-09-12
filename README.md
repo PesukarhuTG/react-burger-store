@@ -1,4 +1,4 @@
-# React Burger Store
+# SPA | Burger online-store
 
 <h2 align="center"><a href="https://react-burger-store.vercel.app/" target="_blank">Deploy link</a></h2>
 
