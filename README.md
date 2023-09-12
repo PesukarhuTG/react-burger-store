@@ -1,6 +1,6 @@
 # React Burger Store
 
-<h2 align="center"><a href="https://rainbow-daifuku-771ba4.netlify.app/" target="_blank">Deploy link</a></h2>
+<h2 align="center"><a href="https://react-burger-store.vercel.app/" target="_blank">Deploy link</a></h2>
 
 ![burger-preview](https://user-images.githubusercontent.com/39487464/223119936-792fa115-d0c0-4d83-b629-174ccadd7161.JPG)
 
