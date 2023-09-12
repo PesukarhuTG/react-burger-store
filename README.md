@@ -11,7 +11,7 @@ Burger Store is an application where you can order food.<br/>
 
 Develompent:
 
-- use [Vite](https://vitejs.dev/) to launch React project insread of CRA
+- use [Vite](https://vitejs.dev/) to launch React project instead of CRA
 - use [Classnames](https://www.npmjs.com/package/classnames) utility
 - use Functional Components in React
 - use [Redux (RTK)](https://redux-toolkit.js.org/) (store, slices...)
