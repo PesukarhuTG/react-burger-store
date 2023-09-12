@@ -1,23 +1,23 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import style from "./Catalog.module.css";
-import Container from "../Container/Container";
-import Order from "../Order/Order";
-import CatalogProduct from "../CatalogProduct/CatalogProduct";
+import style from './Catalog.module.css';
+import Container from '../Container/Container';
+import Order from '../Order/Order';
+import CatalogProduct from '../CatalogProduct/CatalogProduct';
 import { productRequestAsync } from '../../store/product/productSlice';
 import Message from '../Message/Message';
-
+import Preloader from '../Preloader/Preloader';
 
 const Catalog = () => {
-  const { products, flag } = useSelector((state) => state.product);
-  const { category, activeCategory } = useSelector((state) => state.category);
+  const { products, flag } = useSelector(state => state.product);
+  const { category, activeCategory } = useSelector(state => state.category);
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (category.length) {
       dispatch(productRequestAsync(category[activeCategory].title));
     }
-  }, [category, activeCategory])
+  }, [category, activeCategory]);
 
   return (
     <section className={style.catalog}>
@@ -29,6 +29,7 @@ const Catalog = () => {
             <h2 className={style.title}>{category[activeCategory]?.rus}</h2>
 
             <div className={style.wrap_list}>
+              {!products.length && !flag && <Preloader />}
               {products.length ? (
                 <ul className={style.list}>
                   {products.map(item => (
@@ -37,16 +38,15 @@ const Catalog = () => {
                     </li>
                   ))}
                 </ul>
-                ) : (
-                flag && <Message text={'К сожалению, категория пока пуста'}/>
+              ) : (
+                flag && <Message text={'К сожалению, категория пока пуста'} />
               )}
             </div>
-
           </div>
         </div>
       </Container>
     </section>
-  )
+  );
 };
 
 export default Catalog;
